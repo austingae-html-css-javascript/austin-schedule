@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #navigation-bar {
+        display:flex;
+        flex-direction: row;
+      }
+
+      #navigation-bar-right-side {
+        display: flex;
+        flex-direction: row;
+      }
+
+      #navigation-bar-left-side {
+        display:flex;
+        flex-direction: row;
+      }
+
+      #main-body {
+        display:flex;
+        flex-direction: row;
+      }
+
+      #main-body-right-side {
+        display: grid;
+        grid-template-columns: 150px 150px 150px 150px;
+        grid-template-rows: 250px 250px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="navigation-bar">
+      <div id="navigation-bar-right-side">
+        <div>
+          <p>mySchedule</p>
+        </div>
+        <div>
+          <img src="schedule-logo.png">
+        </div>
+      </div>
+      <div id="navigation-bar-left-side">
+        <div>
+          <button>Weekly Schedule</button>
+        </div>
+        <div>
+          <button>Schedule Template</button>
+        </div>
+        <div>
+          <img src="profile-icon.png">
+        </div>
+      </div>
+    </div>
+
+    <div id="main-body">
+      <div id="main-body-left-side">
+        <p>Weekly Goals</p>
+      </div>
+      <div id="main-body-right-side">
+        <div id="monday">
+          <p>Monday</p>
+        </div>
+        <div id="tuesday">
+          <p>Tuesday</p>
+        </div>
+        <div id="wednesday">
+          <p>Wednesday</p>
+        </div>
+        <div id="thursday">
+          <p>Thursday</p>
+        </div>
+        <div id="friday">
+          <p>Friday</p>
+        </div>
+        <div id="saturday">
+          <p>Saturday</p>
+        </div>
+        <div id="sunday">
+          <p>Sunday</p>
+        </div>
+        <div id="done-for-the-week">
+          <button>Upload Next Week Schedule!</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
