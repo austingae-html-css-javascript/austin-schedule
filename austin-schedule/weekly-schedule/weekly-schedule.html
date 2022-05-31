@@ -2,30 +2,162 @@
 <html>
   <head>
     <style>
+      body {
+        font-family: Arial;
+        margin: 0px;
+        background-color: rgb(43,62,79);
+      }
+
+      p {
+        margin: 0px;
+      }
+
+      textarea {
+        font-family: Arial;
+      }
+
       #navigation-bar {
         display:flex;
         flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 30px 30px 30px;
+        background-color: rgb(238,238,238);
+
+        margin-bottom: 20px;
       }
 
       #navigation-bar-right-side {
         display: flex;
         flex-direction: row;
+        align-items: center;
+        margin-right: 10px;
+      }
+
+      #mySchedule-title {
+        font-weight: bold;
+      }
+
+      #mySchedule-title-my {
+        color: rgb(43,62,79);
+        font-size: 20px;
+      }
+
+      #mySchedule-title-Schedule {
+        color: rgb(234,104,93);
+        font-size: 25px;
+      }
+
+      #mySchedule-logo {
+        width: 35px;
       }
 
       #navigation-bar-left-side {
         display:flex;
         flex-direction: row;
+        align-items: center;
+      }
+
+      #schedule-template-button-container {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      #weekly-schedule-button, 
+      #schedule-template-button {
+        color: white;
+        font-weight: bold;
+        background-color: rgb(43,62,79);
+        border-style: solid;
+        border-color: rgb(43,62,79);
+        border-radius: 10px;
+        padding: 5px 10px 5px 10px;
+      }
+
+      #profile-logo-container {
+        height: 35px;
+      }
+
+      #profile-logo {
+        width: 35px;
       }
 
       #main-body {
         display:flex;
         flex-direction: row;
+        justify-content: space-between;
+      }
+
+      #left-empty-space {
+        flex: 2;
+      }
+
+      #middle-empty-space {
+        flex: 8;
+      }
+
+      #right-empty-space {
+        flex: 2;
+      }
+
+      #main-body-left-side {
+        display:flex;
+        flex-direction: column;
+
+        align-items: center;
+        
+        font-weight: bold;
+
+        width: 200px;
+        padding: 5px 5px 5px 5px;
+        border:none;
+
+        background-color: rgb(238,238,238);
+      }
+
+      #weekly-goals-text {
+        width: 196px;
+        resize: none;
+        border: none;
+        outline: none;
+        background-color: rgb(238,238,238);
       }
 
       #main-body-right-side {
         display: grid;
-        grid-template-columns: 150px 150px 150px 150px;
+        grid-template-columns: 200px 200px 200px 200px;
         grid-template-rows: 250px 250px;
+
+        column-gap: 10px;
+        row-gap: 10px;
+      }
+
+      .day-container {
+        display:flex;
+        flex-direction: column;
+
+        align-items: center;
+
+        background-color: rgb(238,238,238);
+        border-style: solid;
+        border-color: white;
+      }
+
+      .day-title-container {
+        margin-bottom: 10px;
+      }
+
+      .day-title {
+        font-weight: bold;
+        color: black;
+      }
+
+      .day-text {
+        width: 193px;
+        height: 200px;
+        border:none;
+        resize: none;
+        outline: none;
+        background-color: rgb(238,238,238);
       }
     </style>
   </head>
@@ -34,55 +166,115 @@
     <div id="navigation-bar">
       <div id="navigation-bar-right-side">
         <div>
-          <p>mySchedule</p>
+          <p id="mySchedule-title"><span id="mySchedule-title-my">my</span><span id="mySchedule-title-Schedule">Schedule</span></p>
         </div>
-        <div>
-          <img src="schedule-logo.png">
+        <div id="mySchedule-logo-container">
+          <img id="mySchedule-logo"src="schedule-logo.png">
         </div>
       </div>
       <div id="navigation-bar-left-side">
         <div>
-          <button>Weekly Schedule</button>
+          <button id="weekly-schedule-button">Weekly Schedule</button>
         </div>
-        <div>
-          <button>Schedule Template</button>
+        <div id="schedule-template-button-container">
+          <button id="schedule-template-button">Schedule Template</button>
         </div>
-        <div>
-          <img src="profile-icon.png">
+        <div id="profile-logo-container">
+          <img id="profile-logo" src="profile-icon.png">
         </div>
       </div>
     </div>
 
     <div id="main-body">
+      <div id="left-empty-space"></div>
       <div id="main-body-left-side">
-        <p>Weekly Goals</p>
+        <div>
+          <p id="weekly-goals-title" class="title">Weekly Goals</p>
+        </div>
+        <div>
+          <textarea id="weekly-goals-text" cols="" rows="30"></textarea>
+        </div>
       </div>
+      <div id="middle-empty-space"></div>
       <div id="main-body-right-side">
-        <div id="monday">
-          <p>Monday</p>
+        <div id="monday" class="day-container">
+          <div class="day-title-container">
+            <p class="day-title">Monday</p>
+          </div>
+
+          <div>
+            <textarea class="day-text"></textarea>
+          </div>
         </div>
-        <div id="tuesday">
-          <p>Tuesday</p>
+
+        <div id="tuesday" class="day-container">
+          <div class="day-title-container">
+            <p class="day-title">Tuesday</p>
+          </div>
+
+          <div>
+            <textarea class="day-text"></textarea>
+          </div>
         </div>
-        <div id="wednesday">
-          <p>Wednesday</p>
+
+        <div id="wednesday" class="day-container">
+          <div class="day-title-container">
+            <p class="day-title">Wednesday</p>
+          </div>
+
+          <div>
+            <textarea class="day-text"></textarea>
+          </div>
         </div>
-        <div id="thursday">
-          <p>Thursday</p>
+
+        <div id="thursday" class="day-container">
+          <div class="day-title-container">
+            <p class="day-title">Thursday</p>
+          </div>
+
+          <div>
+            <textarea class="day-text"></textarea>
+          </div>
         </div>
-        <div id="friday">
-          <p>Friday</p>
+
+        <div id="friday" class="day-container">
+          <div class="day-title-container">
+            <p class="day-title">Friday</p>
+          </div>
+
+          <div>
+            <textarea class="day-text"></textarea>
+          </div>
         </div>
-        <div id="saturday">
-          <p>Saturday</p>
+
+        <div id="saturday" class="day-container">
+          <div class="day-title-container">
+            <p class="day-title">Saturday</p>
+          </div>
+
+          <div>
+            <textarea class="day-text"></textarea>
+          </div>
         </div>
-        <div id="sunday">
-          <p>Sunday</p>
-        </div>
-        <div id="done-for-the-week">
-          <button>Upload Next Week Schedule!</button>
+
+        <div id="sunday" class="day-container">
+          <div class="day-title-container">
+            <p class="day-title">Sunday</p>
+          </div>
+
+          <div>
+            <textarea class="day-text"></textarea>
+          </div>
         </div>
       </div>
+      <div id="right-empty-space"></div>
     </div>
   </body>
 </html>
+
+<!--
+  display: flex;
+  flex-direction: column
+
+  The children divs take up the width of the parent div or website page. 
+-->
