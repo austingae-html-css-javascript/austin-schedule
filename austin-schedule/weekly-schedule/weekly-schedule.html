@@ -16,6 +16,10 @@
         font-family: Arial;
       }
 
+      button {
+        cursor: pointer;
+      }
+
       #navigation-bar {
         display:flex;
         flex-direction: row;
@@ -79,6 +83,7 @@
 
       #profile-logo {
         width: 35px;
+        cursor: pointer;
       }
 
       #main-body {
@@ -185,13 +190,13 @@
       </div>
       <div id="navigation-bar-left-side">
         <div>
-          <button id="weekly-schedule-button">Weekly Schedule</button>
+          <button id="weekly-schedule-button" onclick="window.location.href='weekly-schedule.html'">Weekly Schedule</button>
         </div>
         <div id="schedule-template-button-container">
-          <button id="schedule-template-button">Schedule Template</button>
+          <button id="schedule-template-button" onclick="window.location.href='../schedule-template/schedule-template.html'">Schedule Template</button>
         </div>
         <div id="profile-logo-container">
-          <img id="profile-logo" src="profile-icon.png">
+          <img id="profile-logo" src="profile-icon.png" onclick="window.location.href='../profile/profile.html'">
         </div>
       </div>
     </div>
