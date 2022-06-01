@@ -1,0 +1,65 @@
+#navigation-bar {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 30px 30px 30px;
+  background-color: rgb(238,238,238);
+
+  margin-bottom: 20px;
+}
+
+#navigation-bar-right-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+}
+
+#mySchedule-title {
+  font-weight: bold;
+}
+
+#mySchedule-title-my {
+  color: rgb(43,62,79);
+  font-size: 20px;
+}
+
+#mySchedule-title-Schedule {
+  color: rgb(234,104,93);
+  font-size: 25px;
+}
+
+#mySchedule-logo {
+  width: 35px;
+}
+
+#navigation-bar-left-side {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#schedule-template-button-container {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#weekly-schedule-button, 
+#schedule-template-button {
+  color: white;
+  font-weight: bold;
+  background-color: rgb(43,62,79);
+  border-style: solid;
+  border-color: rgb(43,62,79);
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+}
+
+#profile-logo-container {
+  height: 35px;
+}
+
+#profile-logo {
+  width: 35px;
+  cursor: pointer;
+}

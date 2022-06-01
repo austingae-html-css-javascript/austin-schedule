@@ -1,205 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      body {
-        font-family: Arial;
-        margin: 0px;
-        background-color: rgb(43,62,79);
-      }
+    
+    <link rel="stylesheet" href="weekly-schedule.css">
+    <link rel="stylesheet" href="../navigation-bar/navigation-bar.css">
 
-      p {
-        margin: 0px;
-      }
-
-      textarea {
-        font-family: Arial;
-      }
-
-      button {
-        cursor: pointer;
-      }
-
-      #navigation-bar {
-        display:flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px 30px 30px 30px;
-        background-color: rgb(238,238,238);
-
-        margin-bottom: 20px;
-      }
-
-      #navigation-bar-right-side {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-right: 10px;
-      }
-
-      #mySchedule-title {
-        font-weight: bold;
-      }
-
-      #mySchedule-title-my {
-        color: rgb(43,62,79);
-        font-size: 20px;
-      }
-
-      #mySchedule-title-Schedule {
-        color: rgb(234,104,93);
-        font-size: 25px;
-      }
-
-      #mySchedule-logo {
-        width: 35px;
-      }
-
-      #navigation-bar-left-side {
-        display:flex;
-        flex-direction: row;
-        align-items: center;
-      }
-
-      #schedule-template-button-container {
-        margin-left: 20px;
-        margin-right: 20px;
-      }
-
-      #weekly-schedule-button, 
-      #schedule-template-button {
-        color: white;
-        font-weight: bold;
-        background-color: rgb(43,62,79);
-        border-style: solid;
-        border-color: rgb(43,62,79);
-        border-radius: 10px;
-        padding: 5px 10px 5px 10px;
-      }
-
-      #profile-logo-container {
-        height: 35px;
-      }
-
-      #profile-logo {
-        width: 35px;
-        cursor: pointer;
-      }
-
-      #main-body {
-        display:flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      #left-empty-space {
-        flex: 2;
-      }
-
-      #middle-empty-space {
-        flex: 8;
-      }
-
-      #right-empty-space {
-        flex: 2;
-      }
-
-      #main-body-left-side {
-        display:flex;
-        flex-direction: column;
-
-        align-items: center;
-        
-        font-weight: bold;
-
-        width: 200px;
-        padding: 5px 5px 5px 5px;
-        border:none;
-
-        background-color: rgb(238,238,238);
-
-        border-radius: 5px;
-      }
-
-      #weekly-goals-text {
-        width: 196px;
-        resize: none;
-        border: none;
-        outline: none;
-        background-color: rgb(238,238,238);
-      }
-
-      #main-body-right-side {
-        display: grid;
-        grid-template-columns: 200px 200px 200px 200px;
-        grid-template-rows: 250px 250px;
-
-        column-gap: 10px;
-        row-gap: 10px;
-      }
-
-      .day-container {
-        display:flex;
-        flex-direction: column;
-
-        align-items: center;
-
-        background-color: rgb(238,238,238);
-        border-style: solid;
-        border-color: rgb(238,238,238);
-
-        border-radius: 5px;
-      }
-
-      .day-title-container {
-        margin-top: 5px;
-        margin-bottom: 1px;
-      }
-
-      .line-between-title-and-text {
-        border-color: black; 
-        width: 80%; 
-        border-width: 0.5px;
-      }
-
-      .day-title {
-        font-weight: bold;
-        color: black;
-      }
-
-      .day-text {
-        width: 193px;
-        height: 200px;
-        border:none;
-        resize: none;
-        outline: none;
-        background-color: rgb(238,238,238);
-      }
-    </style>
+    <!--JQuery Line of Code-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   </head>
 
   <body>
-    <div id="navigation-bar">
-      <div id="navigation-bar-right-side">
-        <div>
-          <p id="mySchedule-title"><span id="mySchedule-title-my">my</span><span id="mySchedule-title-Schedule">Schedule</span></p>
-        </div>
-        <div id="mySchedule-logo-container">
-          <img id="mySchedule-logo"src="schedule-logo.png">
-        </div>
-      </div>
-      <div id="navigation-bar-left-side">
-        <div>
-          <button id="weekly-schedule-button" onclick="window.location.href='weekly-schedule.html'">Weekly Schedule</button>
-        </div>
-        <div id="schedule-template-button-container">
-          <button id="schedule-template-button" onclick="window.location.href='../schedule-template/schedule-template.html'">Schedule Template</button>
-        </div>
-        <div id="profile-logo-container">
-          <img id="profile-logo" src="profile-icon.png" onclick="window.location.href='../profile/profile.html'">
-        </div>
-      </div>
-    </div>
+    <script>
+      //JQuery Line of Code
+      $(function() {
+        $("#navigation-bar").load("../navigation-bar/navigation-bar.html");
+      });
+    </script>
+
+    <div id="navigation-bar"></div>
 
     <div id="main-body">
       <div id="left-empty-space"></div>

@@ -1,0 +1,107 @@
+body {
+  font-family: Arial;
+  margin: 0px;
+  background-color: rgb(43,62,79);
+}
+
+p {
+  margin: 0px;
+}
+
+textarea {
+  font-family: Arial;
+}
+
+button {
+  cursor: pointer;
+}
+
+#main-body {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#left-empty-space {
+  flex: 2;
+}
+
+#middle-empty-space {
+  flex: 8;
+}
+
+#right-empty-space {
+  flex: 2;
+}
+
+#main-body-left-side {
+  display:flex;
+  flex-direction: column;
+
+  align-items: center;
+  
+  font-weight: bold;
+
+  width: 200px;
+  padding: 5px 5px 5px 5px;
+  border:none;
+
+  background-color: rgb(238,238,238);
+
+  border-radius: 5px;
+}
+
+#weekly-goals-text {
+  width: 196px;
+  resize: none;
+  border: none;
+  outline: none;
+  background-color: rgb(238,238,238);
+}
+
+#main-body-right-side {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+  grid-template-rows: 250px 250px;
+
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.day-container {
+  display:flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  background-color: rgb(238,238,238);
+  border-style: solid;
+  border-color: rgb(238,238,238);
+
+  border-radius: 5px;
+}
+
+.day-title-container {
+  margin-top: 5px;
+  margin-bottom: 1px;
+}
+
+.line-between-title-and-text {
+  border-color: black; 
+  width: 80%; 
+  border-width: 0.5px;
+}
+
+.day-title {
+  font-weight: bold;
+  color: black;
+}
+
+.day-text {
+  width: 193px;
+  height: 200px;
+  border:none;
+  resize: none;
+  outline: none;
+  background-color: rgb(238,238,238);
+}
