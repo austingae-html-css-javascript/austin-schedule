@@ -1,0 +1,42 @@
+#profile-main-body {
+  display: flex;
+  flex-direction: row;
+}
+
+#profile-left-body {
+  display: flex;
+  flex-direction: column;
+}
+
+#profile-right-body {
+  display: flex;
+  flex-direction: column;
+}
+
+#profile-picture {
+  width: 325px;
+}
+
+#profile-name {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  width: 325px;
+}
+
+#profile-description {
+  color: white;
+  width: 325px;
+}
+
+#edit-profile-button {
+  color: white;
+  background-color: rgb(84, 90, 97);
+  border-style: solid;
+  border-color: rgb(84, 90, 97);
+}
+
+#schedule-history-title {
+  color: white;
+  font-weight: bold;
+}
