@@ -1,0 +1,17 @@
+body {
+  font-family: Arial;
+  margin: 0px;
+  background-color: rgb(43,62,79);
+}
+
+p {
+  margin: 0px;
+}
+
+textarea {
+  font-family: Arial;
+}
+
+button {
+  cursor: pointer;
+}

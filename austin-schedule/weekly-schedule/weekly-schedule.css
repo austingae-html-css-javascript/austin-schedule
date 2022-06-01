@@ -1,21 +1,3 @@
-body {
-  font-family: Arial;
-  margin: 0px;
-  background-color: rgb(43,62,79);
-}
-
-p {
-  margin: 0px;
-}
-
-textarea {
-  font-family: Arial;
-}
-
-button {
-  cursor: pointer;
-}
-
 #main-body {
   display:flex;
   flex-direction: row;
@@ -49,6 +31,10 @@ button {
   background-color: rgb(238,238,238);
 
   border-radius: 5px;
+}
+
+#weekly-goals-title {
+  width: 100px;
 }
 
 #weekly-goals-text {
