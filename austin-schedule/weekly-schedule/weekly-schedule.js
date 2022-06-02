@@ -10,101 +10,150 @@ Now, this is what I want to solve: profile.js can access variables in weekly-sch
 Starting from "let dayTextList = []" to "localStorage.setItem...":
 In weekly-schedule.html, if #done-for-the-week-button button is clicked, then dayTextList will save Monday-Sunday texts. 
 At the end, dayTextList will be saved into localStorage under the name of "dayTextListInLocalStorage". 
-savedDayTextList variable will equal to dayTextListInLocalStorage. In short, savedDayTextList will have the Monday-Sunday texts.
+savedScheduleHistoryList variable will equal to dayTextListInLocalStorage. In short, savedScheduleHistoryList will have the Monday-Sunday texts.
 */
-let dayTextList = [];
 
-let savedDayTextList = JSON.parse(localStorage.getItem("dayTextListInLocalStorage"));
+let weeklyScheduleList = [];
 
-window.addEventListener("click", function(event) {
-if (event.target.id == "done-for-the-week-button") {
-    mondayText = document.getElementById("monday-text").value;
-    dayTextList.push(mondayText);
+let savedScheduleHistoryList = JSON.parse(localStorage.getItem("scheduleHistoryList"));
 
-    tuesdayText = document.getElementById("tuesday-text").value;
-    dayTextList.push(tuesdayText);
+uploadScheduleHistory();
 
-    wednesdayText = document.getElementById("wednesday-text").value;
-    dayTextList.push(wednesdayText);
+function uploadScheduleHistory() {
+  let numberOfWeeks = savedScheduleHistoryList.length/7;
 
-    thursdayText = document.getElementById("thursday-text").value;
-    dayTextList.push(thursdayText);
-
-    fridayText = document.getElementById("friday-text").value;
-    dayTextList.push(fridayText);
-
-    saturdayText = document.getElementById("saturday-text").value;
-    dayTextList.push(saturdayText);
-    
-    sundayText = document.getElementById("sunday-text").value;
-    dayTextList.push(sundayText);
-
-    localStorage.setItem("dayTextListInLocalStorage",JSON.stringify(dayTextList));
-  }
-
-  /*
-  In profile.html, if #schedule-history-update-button button is clicked, then one mondayToSundaySchedule will be created. In mondayToSundaySchedule,
-  one div will be created for Monday; inside this div will have the day title "Monday" and the day text. Then another div will be created for Tuesday, 
-  and the same for Wednesday, Thursday, Friday, Saturday, and Sunday.
-  */
-  else if (event.target.id == "schedule-history-update-button") {
-    let mondayToSundaySchedule = document.createElement("div");
-    mondayToSundaySchedule.style.cssText = "display: grid; grid-template-columns: 200px 200px 200px 200px; grid-template-rows: 250px 250px; column-gap: 10px; row-gap: 10px; margin-bottom: 30px;";
-    document.getElementById("schedule-history-content").appendChild(mondayToSundaySchedule);
-
-    for (let i = 0; i < savedDayTextList.length; i++) {
-      let dayContainer = document.createElement("div");
-      dayContainer.style.cssText = "display:flex; flex-direction: column; align-items: center; background-color: rgb(238,238,238); border-style: solid; border-color: rgb(238,238,238); border-radius: 5px;";
-      mondayToSundaySchedule.appendChild(dayContainer);
-
-      let dayTitleContainer = document.createElement("div");
-      dayTitleContainer.style.cssText = "margin-top: 5px; margin-bottom: 1px;";
-      dayContainer.appendChild(dayTitleContainer);
-
-      let dayTitle = document.createElement("p");
-      if (i == 0) {
+  for (let week = 0; week < numberOfWeeks; week++) {
+    let weeklySchedule = document.createElement("div");
+    weeklySchedule.style.cssText = "display: grid; grid-template-columns: 200px 200px 200px 200px; grid-template-rows: 250px 250px; column-gap: 10px; row-gap: 10px; margin-bottom: 30px;";
+    document.getElementById("schedule-history-content").appendChild(weeklySchedule);
+  
+    let numberOfDaysPerWeek = 7;
+    for (let day = 0; day < 7; day++) {
+     let dayContainer = document.createElement("div");
+     dayContainer.style.cssText = "display:flex; flex-direction: column; align-items: center; background-color: rgb(238,238,238); border-style: solid; border-color: rgb(238,238,238); border-radius: 5px;";
+     weeklySchedule.appendChild(dayContainer);
+  
+     let dayTitleContainer = document.createElement("div");
+     dayTitleContainer.style.cssText = "margin-top: 5px; margin-bottom: 1px;";
+     dayContainer.appendChild(dayTitleContainer);
+  
+     let dayTitle = document.createElement("p");
+      if (day == 0) {
         dayTitle.innerHTML = "Monday";
-      } else if (i == 1) {
+      } else if (day == 1) {
         dayTitle.innerHTML = "Tuesday";
-      } else if (i == 2) {
+      } else if (day == 2) {
         dayTitle.innerHTML = "Wednesday";
-      } else if (i == 3) {
+      } else if (day == 3) {
         dayTitle.innerHTML = "Thursday";
-      } else if (i == 4) {
+      } else if (day == 4) {
         dayTitle.innerHTML = "Friday";
-      } else if (i == 5) {
+      } else if (day == 5) {
         dayTitle.innerHTML = "Saturday";
-      } else if (i == 6) {
+      } else if (day == 6) {
         dayTitle.innerHTML = "Sunday";
       }
       dayTitle.style.cssText = "font-weight: bold; color: black;";
       dayTitleContainer.appendChild(dayTitle);
-
+  
       lineBetweenTitleAndText = document.createElement("hr");
       lineBetweenTitleAndText.style.cssText = "border-color: black; width: 80%; border-width: 0.5px;"
-      dayContainer.appendChild(lineBetweenTitleAndText);
-
+      dayContainer.appendChild(lineBetweenTitleAndText);    
+  
       dayTextContainer = document.createElement("div");
       dayContainer.appendChild(dayTextContainer);
-
+  
+  
       dayText = document.createElement("p");
-      if (i == 0) {
-        dayText.innerHTML = savedDayTextList[i];
-      } else if (i == 1) {
-        dayText.innerHTML = savedDayTextList[i]
-      } else if (i == 2) {
-        dayText.innerHTML = savedDayTextList[i];
-      } else if (i == 3) {
-        dayText.innerHTML = savedDayTextList[i];
-      } else if (i == 4) {
-        dayText.innerHTML = savedDayTextList[i];
-      } else if (i == 5) {
-        dayText.innerHTML = savedDayTextList[i];
-      } else if (i == 6) {
-        dayText.innerHTML = savedDayTextList[i];
+      let number = (week * numberOfDaysPerWeek);
+      /*
+      week = 0...
+      number = 0
+      0 + number = 0
+      1 + number = 1
+      2 + number = 2
+      3 + number = 3
+      4 + number = 4
+      5 + number = 5
+      6 + number = 6
+  
+      week = 1...
+      number = 7
+      0 + number = 7
+      1 + number = 8
+      2 + number = 9
+      3 + number = 10
+      4 + number = 11
+      5 + number = 12
+      6 + number = 13
+  
+      week = 2...
+      number = 14
+      0 + number = 14
+      1 + number = 15
+      2 + number = 16
+      3 + number = 17
+      4 + number = 18
+      5 + number = 19
+      6 + number = 20
+      */
+  
+      if (day + number == 0 + number) {
+        dayText.innerHTML = savedScheduleHistoryList[0 + number];
+      } else if (day + number == 1 + number) {
+        dayText.innerHTML = savedScheduleHistoryList[1 + number];
+      } else if (day + number == 2 + number) {
+        dayText.innerHTML = savedScheduleHistoryList[2 + number];
+      } else if (day + number == 3 + number) {
+        dayText.innerHTML = savedScheduleHistoryList[3 + number];
+      } else if (day + number == 4 + number) {
+        dayText.innerHTML = savedScheduleHistoryList[4 + number];
+      } else if (day + number == 5 + number) {
+        dayText.innerHTML = savedScheduleHistoryList[5 + number];
+      } else if (day + number == 6 + number) {
+        dayText.innerHTML = savedScheduleHistoryList[6 + number];
       }
       dayText.style.cssText = "width: 193px; height: 200px; border:none; resize: none; outline: none; background-color: rgb(238,238,238);";
-      dayContainer.appendChild(dayText);
-    }
+      dayTextContainer.appendChild(dayText);
+   }
+  }
+}
+
+window.addEventListener("click", function(event) {
+  if (event.target.id == "done-for-the-week-button") {
+      mondayText = document.getElementById("monday-text").value;
+      weeklyScheduleList.push(mondayText);
+
+      tuesdayText = document.getElementById("tuesday-text").value;
+      weeklyScheduleList.push(tuesdayText);
+
+      wednesdayText = document.getElementById("wednesday-text").value;
+      weeklyScheduleList.push(wednesdayText);
+
+      thursdayText = document.getElementById("thursday-text").value;
+      weeklyScheduleList.push(thursdayText);
+
+      fridayText = document.getElementById("friday-text").value;
+      weeklyScheduleList.push(fridayText);
+
+      saturdayText = document.getElementById("saturday-text").value;
+      weeklyScheduleList.push(saturdayText);
+      
+      sundayText = document.getElementById("sunday-text").value;
+      weeklyScheduleList.push(sundayText);
+
+      if (localStorage.getItem("scheduleHistoryList") == null) { //if scheduleHistoryList does not exist in Local Storage, then...
+        localStorage.setItem("scheduleHistoryList", JSON.stringify(weeklyScheduleList)); //create scheduleHistoryList in Local Storage, and make scheduleHistoryList equal to weeklyScheduleList
+      }
+      else if (localStorage.getItem("scheduleHistoryList") != null) { //if scheduleHistoryList does exist in Local Storage, then...
+        let list = JSON.parse(localStorage.getItem("scheduleHistoryList"));
+        
+        for (let i = 0; i < weeklyScheduleList.length; i++) {
+          list.push(weeklyScheduleList[i]);
+        }
+
+        console.log(list);
+        localStorage.setItem("scheduleHistoryList", JSON.stringify(list));
+      }
   }
 });
