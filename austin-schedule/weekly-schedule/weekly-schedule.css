@@ -91,3 +91,23 @@
   outline: none;
   background-color: rgb(238,238,238);
 }
+
+#done-for-the-week-button-container {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#done-for-the-week-button {
+  color: black;
+  background-color: rgb(171,140,85);
+  border-style: solid;
+  border-color: rgb(171,140,85);
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+}
+
+#done-for-the-week-button:hover {
+  background-color: rgb(236, 179, 82);
+}
