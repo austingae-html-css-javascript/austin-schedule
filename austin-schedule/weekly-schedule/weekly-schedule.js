@@ -6,10 +6,15 @@ Now, this is what I want to solve: profile.js can access variables in weekly-sch
 
 */
 
-
+/*
+Starting from "let dayTextList = []" to "localStorage.setItem...":
+In weekly-schedule.html, if #done-for-the-week-button button is clicked, then dayTextList will save Monday-Sunday texts. 
+At the end, dayTextList will be saved into localStorage under the name of "dayTextListInLocalStorage". 
+savedDayTextList variable will equal to dayTextListInLocalStorage. In short, savedDayTextList will have the Monday-Sunday texts.
+*/
 let dayTextList = [];
 
-const savedDayTextList = localStorage.getItem("dayTextListInLocalStorage");
+let savedDayTextList = JSON.parse(localStorage.getItem("dayTextListInLocalStorage"));
 
 window.addEventListener("click", function(event) {
 if (event.target.id == "done-for-the-week-button") {
@@ -36,15 +41,25 @@ if (event.target.id == "done-for-the-week-button") {
 
     localStorage.setItem("dayTextListInLocalStorage",JSON.stringify(dayTextList));
   }
-  else if (event.target.id == "schedule-history-update-button") {
-    let mainBodyRightSide = document.createElement("div");
-    mainBodyRightSide.style.cssText = "display: grid; grid-template-columns: 200px 200px 200px 200px; grid-template-rows: 250px 250px; column-gap: 10px; row-gap: 10px;";
-    document.getElementById("schedule-history-content").appendChild(mainBodyRightSide);
 
-    for (let i = 0; i < 7; i++) {
+  /*
+  In profile.html, if #schedule-history-update-button button is clicked, then one mondayToSundaySchedule will be created. In mondayToSundaySchedule,
+  one div will be created for Monday; inside this div will have the day title "Monday" and the day text. Then another div will be created for Tuesday, 
+  and the same for Wednesday, Thursday, Friday, Saturday, and Sunday.
+  */
+  else if (event.target.id == "schedule-history-update-button") {
+    let mondayToSundaySchedule = document.createElement("div");
+    mondayToSundaySchedule.style.cssText = "display: grid; grid-template-columns: 200px 200px 200px 200px; grid-template-rows: 250px 250px; column-gap: 10px; row-gap: 10px; margin-bottom: 30px;";
+    document.getElementById("schedule-history-content").appendChild(mondayToSundaySchedule);
+
+    for (let i = 0; i < savedDayTextList.length; i++) {
       let dayContainer = document.createElement("div");
       dayContainer.style.cssText = "display:flex; flex-direction: column; align-items: center; background-color: rgb(238,238,238); border-style: solid; border-color: rgb(238,238,238); border-radius: 5px;";
-      mainBodyRightSide.appendChild(dayContainer);
+      mondayToSundaySchedule.appendChild(dayContainer);
+
+      let dayTitleContainer = document.createElement("div");
+      dayTitleContainer.style.cssText = "margin-top: 5px; margin-bottom: 1px;";
+      dayContainer.appendChild(dayTitleContainer);
 
       let dayTitle = document.createElement("p");
       if (i == 0) {
@@ -63,82 +78,33 @@ if (event.target.id == "done-for-the-week-button") {
         dayTitle.innerHTML = "Sunday";
       }
       dayTitle.style.cssText = "font-weight: bold; color: black;";
-      dayContainer.appendChild(dayTitle);
-    }
+      dayTitleContainer.appendChild(dayTitle);
 
+      lineBetweenTitleAndText = document.createElement("hr");
+      lineBetweenTitleAndText.style.cssText = "border-color: black; width: 80%; border-width: 0.5px;"
+      dayContainer.appendChild(lineBetweenTitleAndText);
+
+      dayTextContainer = document.createElement("div");
+      dayContainer.appendChild(dayTextContainer);
+
+      dayText = document.createElement("p");
+      if (i == 0) {
+        dayText.innerHTML = savedDayTextList[i];
+      } else if (i == 1) {
+        dayText.innerHTML = savedDayTextList[i]
+      } else if (i == 2) {
+        dayText.innerHTML = savedDayTextList[i];
+      } else if (i == 3) {
+        dayText.innerHTML = savedDayTextList[i];
+      } else if (i == 4) {
+        dayText.innerHTML = savedDayTextList[i];
+      } else if (i == 5) {
+        dayText.innerHTML = savedDayTextList[i];
+      } else if (i == 6) {
+        dayText.innerHTML = savedDayTextList[i];
+      }
+      dayText.style.cssText = "width: 193px; height: 200px; border:none; resize: none; outline: none; background-color: rgb(238,238,238);";
+      dayContainer.appendChild(dayText);
+    }
   }
 });
-
-/*
-      <div id="main-body-right-side">
-        <div id="monday" class="day-container">
-          <div class="day-title-container">
-            <p class="day-title">Monday</p>
-          </div>
-          <hr class="line-between-title-and-text">
-          <div>
-            <textarea class="day-text" id="monday-text"></textarea>
-          </div>
-        </div>
-
-        <div id="tuesday" class="day-container">
-          <div class="day-title-container">
-            <p class="day-title">Tuesday</p>
-          </div>
-          <hr class="line-between-title-and-text">
-          <div>
-            <textarea class="day-text" id="tuesday-text"></textarea>
-          </div>
-        </div>
-
-        <div id="wednesday" class="day-container">
-          <div class="day-title-container">
-            <p class="day-title">Wednesday</p>
-          </div>
-          <hr class="line-between-title-and-text">
-          <div>
-            <textarea class="day-text" id="wednesday-text"></textarea>
-          </div>
-        </div>
-
-        <div id="thursday" class="day-container">
-          <div class="day-title-container">
-            <p class="day-title">Thursday</p>
-          </div>
-          <hr class="line-between-title-and-text">
-          <div>
-            <textarea class="day-text" id="thursday-text"></textarea>
-          </div>
-        </div>
-
-        <div id="friday" class="day-container">
-          <div class="day-title-container">
-            <p class="day-title">Friday</p>
-          </div>
-          <hr class="line-between-title-and-text">
-          <div>
-            <textarea class="day-text" id="friday-text"></textarea>
-          </div>
-        </div>
-
-        <div id="saturday" class="day-container">
-          <div class="day-title-container">
-            <p class="day-title">Saturday</p>
-          </div>
-          <hr class="line-between-title-and-text">
-          <div>
-            <textarea class="day-text" id="saturday-text"></textarea>
-          </div>
-        </div>
-
-        <div id="sunday" class="day-container">
-          <div class="day-title-container">
-            <p class="day-title">Sunday</p>
-          </div>
-          <hr class="line-between-title-and-text">
-          <div>
-            <textarea class="day-text" id="sunday-text"></textarea>
-          </div>
-        </div>
-*/
-
