@@ -1,26 +1,13 @@
 /*
-Currently, weekly-schedule.html and weekly-schedule.js are linked together; 
-and profile.html and profile.js are also linked together.
-
-Now, this is what I want to solve: profile.js can access variables in weekly-schedule.js
 
 */
-
-/*
-Starting from "let dayTextList = []" to "localStorage.setItem...":
-In weekly-schedule.html, if #done-for-the-week-button button is clicked, then dayTextList will save Monday-Sunday texts. 
-At the end, dayTextList will be saved into localStorage under the name of "dayTextListInLocalStorage". 
-savedScheduleHistoryList variable will equal to dayTextListInLocalStorage. In short, savedScheduleHistoryList will have the Monday-Sunday texts.
-*/
-
-let weeklyScheduleList = [];
-
 let savedScheduleHistoryList = JSON.parse(localStorage.getItem("scheduleHistoryList"));
 
 window.addEventListener("click", function(event) {
   //if the #done-for-the-week-button button is clicked, then...
   if (event.target.id == "done-for-the-week-button") { 
-
+      
+      let weeklyScheduleList = [];
       //weeklyScheduleList = [mondayText content, tuesdayText content, wednesdayText content, etc...]
       mondayText = document.getElementById("monday-text").value;
       weeklyScheduleList.push(mondayText);
@@ -43,6 +30,8 @@ window.addEventListener("click", function(event) {
       sundayText = document.getElementById("sunday-text").value;
       weeklyScheduleList.push(sundayText);
 
+      //First If Statement Content: Create scheduleHistoryList, which is in localStorage
+      //Second If Statement Content: append items to scheduleHistoryList, which is in localStorage
       if (localStorage.getItem("scheduleHistoryList") == null) { //if scheduleHistoryList does not exist in Local Storage, then...
         localStorage.setItem("scheduleHistoryList", JSON.stringify(weeklyScheduleList)); //create scheduleHistoryList in Local Storage, and make scheduleHistoryList equal to weeklyScheduleList
       }
@@ -54,6 +43,52 @@ window.addEventListener("click", function(event) {
         }
         localStorage.setItem("scheduleHistoryList", JSON.stringify(temporaryScheduleHistoryList)); //scheduleHistoryList = new temporaryScheduleHistoryList
       }
+
+      //If the #done-for-the-week-button button is clicked, then the schedule template will be displayed in the weekly schedule.
+      let savedScheduleTemplateList = JSON.parse(localStorage.getItem("scheduleTemplateList"));
+      document.getElementById("monday-text").innerHTML = savedScheduleTemplateList[0];
+      document.getElementById("tuesday-text").innerHTML = savedScheduleTemplateList[1];
+      document.getElementById("wednesday-text").innerHTML = savedScheduleTemplateList[2];
+      document.getElementById("thursday-text").innerHTML = savedScheduleTemplateList[3];
+      document.getElementById("friday-text").innerHTML = savedScheduleTemplateList[4];
+      document.getElementById("saturday-text").innerHTML = savedScheduleTemplateList[5];
+      document.getElementById("sunday-text").innerHTML = savedScheduleTemplateList[6];
+
+  }
+  
+  //if the #update-schedule-template-button button is clicked, then...
+  else if (event.target.id == "update-schedule-template-button") { 
+
+    let scheduleTemplateList = [];
+    //scheduleTemplateList will equal [mondayTemplate, tuesdayTemplate, wednesdayTemplate, etc...]
+    let mondayTemplate = document.getElementById("schedule-template-monday-text").value;
+    scheduleTemplateList.push(mondayTemplate);
+
+    let tuesdayTemplate = document.getElementById("schedule-template-tuesday-text").value;
+    scheduleTemplateList.push(tuesdayTemplate);
+
+    let wednesdayTemplate = document.getElementById("schedule-template-wednesday-text").value;
+    scheduleTemplateList.push(wednesdayTemplate);
+
+    let thursdayTemplate = document.getElementById("schedule-template-thursday-text").value;
+    scheduleTemplateList.push(thursdayTemplate);
+
+    let fridayTemplate = document.getElementById("schedule-template-friday-text").value;
+    scheduleTemplateList.push(fridayTemplate);
+
+    let saturdayTemplate = document.getElementById("schedule-template-saturday-text").value;
+    scheduleTemplateList.push(saturdayTemplate);
+
+    let sundayTemplate = document.getElementById("schedule-template-sunday-text").value;
+    scheduleTemplateList.push(sundayTemplate);
+
+
+    if (localStorage.getItem("scheduleTemplateList") == null) { //if scheduleTemplateList does not exist in localStorage, then...
+      localStorage.setItem("scheduleTemplateList", JSON.stringify(scheduleTemplateList)); //create scheduleTemplateList in Local Storage that is equal to scheduleTemplateList variable
+    }
+    else if (localStorage.getItem("scheduleTemplateList") != null){ //if scheduleTemplateList does exist in localStorage, then...
+      localStorage.setItem("scheduleTemplateList", JSON.stringify(scheduleTemplateList)); //set scheduleTemplateList in Local Storage to the scheduleTemplateList variable
+    }
   }
 });
 
