@@ -43,7 +43,6 @@ window.addEventListener("click", function(event) {
       sundayText = document.getElementById("sunday-text").value;
       weeklyScheduleList.push(sundayText);
 
-
       if (localStorage.getItem("scheduleHistoryList") == null) { //if scheduleHistoryList does not exist in Local Storage, then...
         localStorage.setItem("scheduleHistoryList", JSON.stringify(weeklyScheduleList)); //create scheduleHistoryList in Local Storage, and make scheduleHistoryList equal to weeklyScheduleList
       }
@@ -58,15 +57,7 @@ window.addEventListener("click", function(event) {
   }
 });
 
-/*
-Mission: append items to localStorage
-Solution:
-1) Create a localStorage.
-2) Create a new variable equal to the localStorage.
-3) Append to the new variable by doing this: new variable.push(...)
-4) Set localStorage equal to the new variable
-*/
-
+//This function is used in the profile.html <script> section. 
 function uploadScheduleHistory() {
     let numberOfWeeks = savedScheduleHistoryList.length/7;
   
@@ -166,3 +157,14 @@ function uploadScheduleHistory() {
      }
     }
 }
+
+
+/*
+What I Learned: 
+Goal: append items to localStorage
+Solution:
+1) Create a localStorage.
+2) Create a new variable equal to the localStorage.
+3) Append to the new variable by doing this: new variable.push(...)
+4) Set localStorage equal to the new variable
+*/

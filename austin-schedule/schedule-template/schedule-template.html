@@ -3,6 +3,8 @@
   <head>
     <link rel="stylesheet" href="../general.css">
     <link rel="stylesheet" href="../navigation-bar/navigation-bar.css">
+    <link rel="stylesheet" href="schedule-template.css">
+
     <!--JQuery Line of Code-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>   
   </head>
@@ -16,5 +18,95 @@
     </script>
     
     <div id="navigation-bar"></div>
+
+    <div id="schedule-template-main-body">
+      <div id="schedule-template-left-body"> <!--LEFT BODY-->
+        <div id="schedule-template-title-container">
+          <p>Schedule Template</p>
+        </div>
+        <div>
+          <p>Directions:</p>
+        </div>
+      </div>
+
+      <div id="schedule-template-right-body"> <!--RIGHT BODY-->
+        <div id="schedule-template-monday" class="schedule-template-day-container">
+          <div class="schedule-template-day-title-container">
+            <p class="schedule-template-day-title">Monday</p>
+          </div>
+          <hr class="schedule-template-line-between-title-and-text">
+          <div>
+            <textarea class="schedule-template-day-text" id="schedule-template-monday-text"></textarea>
+          </div>
+        </div>
+
+        <div id="schedule-template-tuesday" class="schedule-template-day-container">
+          <div class="schedule-template-day-title-container">
+            <p class="schedule-template-day-title">Tuesday</p>
+          </div>
+          <hr class="schedule-template-line-between-title-and-text">
+          <div>
+            <textarea class="schedule-template-day-text" id="schedule-template-tuesday-text"></textarea>
+          </div>
+        </div>
+
+        <div id="schedule-template-wednesday" class="schedule-template-day-container">
+          <div class="schedule-template-day-title-container">
+            <p class="schedule-template-day-title">Wednesday</p>
+          </div>
+          <hr class="schedule-template-line-between-title-and-text">
+          <div>
+            <textarea class="schedule-template-day-text" id="schedule-template-wednesday-text"></textarea>
+          </div>
+        </div>
+
+        <div id="schedule-template-thursday" class="schedule-template-day-container">
+          <div class="schedule-template-day-title-container">
+            <p class="schedule-template-day-title">Thursday</p>
+          </div>
+          <hr class="schedule-template-line-between-title-and-text">
+          <div>
+            <textarea class="schedule-template-day-text" id="schedule-template-thursday-text"></textarea>
+          </div>
+        </div>
+
+        <div id="schedule-template-friday" class="schedule-template-day-container">
+          <div class="schedule-template-day-title-container">
+            <p class="schedule-template-day-title">Friday</p>
+          </div>
+          <hr class="schedule-template-line-between-title-and-text">
+          <div>
+            <textarea class="schedule-template-day-text" id="schedule-template-friday-text"></textarea>
+          </div>
+        </div>
+
+        <div id="schedule-template-saturday" class="schedule-template-day-container">
+          <div class="schedule-template-day-title-container">
+            <p class="schedule-template-day-title">Saturday</p>
+          </div>
+          <hr class="schedule-template-line-between-title-and-text">
+          <div>
+            <textarea class="schedule-template-day-text" id="schedule-template-saturday-text"></textarea>
+          </div>
+        </div>
+
+        <div id="schedule-template-sunday" class="schedule-template-day-container">
+          <div class="schedule-template-day-title-container">
+            <p class="schedule-template-day-title">Sunday</p>
+          </div>
+          <hr class="schedule-template-line-between-title-and-text">
+          <div>
+            <textarea class="schedule-template-day-text" id="schedule-template-sunday-text"></textarea>
+          </div>
+        </div>
+
+        <div id="update-schedule-template-button-container">
+          <button id="update-schedule-template-button">Update Schedule Template</button>
+        </div>
+        <div id="right-empty-space"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../weekly-schedule/weekly-schedule.js"></script>
   </body>
 </html>
