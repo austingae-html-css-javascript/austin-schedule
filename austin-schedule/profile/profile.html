@@ -10,40 +10,41 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>   
   </head>
 
-  <body>
+  <body id="profile-web-page-main-body">
     <script>
       //JQuery Line of Code
       $(function() {
         $("#navigation-bar").load("../navigation-bar/navigation-bar.html");
       });
     </script>
+      <div id="navigation-bar"></div>
+
+      <div id="profile-main-body">
+        <div id="profile-left-body">
+          <div id="profile-picture-container">
+            <img id="profile-picture" src="../images/no-profile-picture.webp">
+          </div>
+          <div id="profile-name-and-description-container">
+            <p id="profile-name">Name</p>
+            <p id="profile-description">Profile Description</p>
+          </div>
+          
+          <div id="edit-profile-button-container">
+            <button id="edit-profile-button">Edit Profile</button>
+          </div>
+        </div>
+  
+        <div id="profile-right-body">
+          <div id="schedule-history-title-container">
+            <p id="schedule-history-title">Schedule History</p>
+          </div>
+          <div id="schedule-history-content">
+  
+          </div>
+        </div>
+      </div>
     
-    <div id="navigation-bar"></div>
 
-    <div id="profile-main-body">
-      <div id="profile-left-body">
-        <div id="profile-picture-container">
-          <img id="profile-picture" src="../images/no-profile-picture.webp">
-        </div>
-        <div id="profile-name-and-description-container">
-          <p id="profile-name">Name</p>
-          <p id="profile-description">Profile Description</p>
-        </div>
-        
-        <div id="edit-profile-button-container">
-          <button id="edit-profile-button">Edit Profile</button>
-        </div>
-      </div>
-
-      <div id="profile-right-body">
-        <div id="schedule-history-title-container">
-          <p id="schedule-history-title">Schedule History</p>
-        </div>
-        <div id="schedule-history-content">
-
-        </div>
-      </div>
-    </div>
 
     <script type="text/javascript" src="../austin-schedule.js"></script>
   </body>

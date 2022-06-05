@@ -4,7 +4,7 @@
 window.addEventListener("click", function(event) { //
   //if the #done-for-the-week-button button is clicked, then...
   if (event.target.id == "done-for-the-week-button") { 
-      
+
       let weeklyScheduleList = [];
       //weeklyScheduleList = [mondayText content, tuesdayText content, wednesdayText content, etc...]
       mondayText = document.getElementById("monday-text").value;
@@ -44,13 +44,32 @@ window.addEventListener("click", function(event) { //
 
       //If the #done-for-the-week-button button is clicked, then the schedule template will be displayed in the weekly schedule.
       let savedScheduleTemplateList = JSON.parse(localStorage.getItem("scheduleTemplateList"));
-      document.getElementById("monday-text").innerHTML = savedScheduleTemplateList[0];
-      document.getElementById("tuesday-text").innerHTML = savedScheduleTemplateList[1];
-      document.getElementById("wednesday-text").innerHTML = savedScheduleTemplateList[2];
-      document.getElementById("thursday-text").innerHTML = savedScheduleTemplateList[3];
-      document.getElementById("friday-text").innerHTML = savedScheduleTemplateList[4];
-      document.getElementById("saturday-text").innerHTML = savedScheduleTemplateList[5];
-      document.getElementById("sunday-text").innerHTML = savedScheduleTemplateList[6];
+      console.log(savedScheduleTemplateList[0]);
+      console.log(savedScheduleTemplateList[6]);
+      console.log(savedScheduleTemplateList.length);
+      for (let day = 0; day < savedScheduleTemplateList.length; day++) {
+        if (day == 0) {
+          document.getElementById("monday-text").innerHTML = savedScheduleTemplateList[day];
+        }
+        else if (day == 1) {
+          document.getElementById("tuesday-text").innerHTML = savedScheduleTemplateList[day];
+        }
+        else if (day == 2) {
+          document.getElementById("wednesday-text").innerHTML = savedScheduleTemplateList[day];
+        }
+        else if (day == 3) {
+          document.getElementById("thursday-text").innerHTML = savedScheduleTemplateList[day];
+        }
+        else if (day == 4) {
+          document.getElementById("friday-text").innerHTML = savedScheduleTemplateList[day];
+        }
+        else if (day == 5) {
+          document.getElementById("saturday-text").innerHTML = savedScheduleTemplateList[day];
+        }
+        else if (day == 6) {
+          document.getElementById("sunday-text").innerHTML = savedScheduleTemplateList[day];
+        }
+      } 
   }
   //if the #update-schedule-template-button button is clicked, then...
   else if (event.target.id == "update-schedule-template-button") { 
@@ -85,6 +104,30 @@ window.addEventListener("click", function(event) { //
     else if (localStorage.getItem("scheduleTemplateList") != null){ //if scheduleTemplateList does exist in localStorage, then...
       localStorage.setItem("scheduleTemplateList", JSON.stringify(scheduleTemplateList)); //set scheduleTemplateList in Local Storage to the scheduleTemplateList variable
     }
+  }
+  else if (event.target.id == "edit-profile-button") {
+    let editProfilePage = document.createElement("div");
+    editProfilePage.style.cssText = "position: fixed; top: 0px; bottom: 0px; right: 0px; left: 0px; background-color: rgba(204,204,205,0.8);"
+    document.getElementById("profile-web-page-main-body").appendChild(editProfilePage);
+
+    let editProfilePicture = document.createElement("input")
+    editProfilePicture.type = "file";
+    editProfilePicture.accept = "image/*"; //image/* means any image file
+    editProfilePicture.style.cssText = "position: absolute; top: 44%;"
+    editProfilePage.appendChild(editProfilePicture);
+
+    let editName = document.createElement("textarea");
+    editName.style.cssText = "position: absolute; top: 48%; bottom: 48%;"
+    editProfilePage.appendChild(editName);
+
+    let editProfileDescription = document.createElement("textarea");
+    editProfileDescription.style.cssText = "position: absolute; top: 54%;";
+    editProfilePage.appendChild(editProfileDescription);
+
+    let saveChangeButton = document.createElement("button");
+    saveChangeButton.innerHTML = "Save Changes";
+    saveChangeButton.style.cssText = "position: absolute; top: 60%;";
+    editProfilePage.appendChild(saveChangeButton);
   }
 });
 
@@ -122,7 +165,7 @@ window.addEventListener("beforeunload", function(event) { //before the website p
 });
 
 window.addEventListener("load", function(event) { //when the website page is loaded, then...
-  const websiteLink = event.target.location.href;
+  let websiteLink = event.target.location.href;
   if (websiteLink.includes("weekly-schedule.html")) {
     //When the weekly-schedule.html page loads, then thisWeekScheduleList items will be displayed from monday to sunday texts.
       let thisWeekScheduleList = JSON.parse(localStorage.getItem("thisWeekScheduleList"));
@@ -298,4 +341,11 @@ Solution:
 2) Create a new variable equal to the localStorage.
 3) Append to the new variable by doing this: new variable.push(...)
 4) Set localStorage equal to the new variable
+
+Goal: Before closing the website page, a function will run.
+Solution: 
+window.addEventListener("beforeunload", function(event))
+
+Goal: When loading the website page, a function will run.
+window.addEventListener("load", function(event))
 */
