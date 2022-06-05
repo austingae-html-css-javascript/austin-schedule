@@ -105,29 +105,17 @@ window.addEventListener("click", function(event) { //
       localStorage.setItem("scheduleTemplateList", JSON.stringify(scheduleTemplateList)); //set scheduleTemplateList in Local Storage to the scheduleTemplateList variable
     }
   }
+  //if the #edit-profile-button button is clicked, then...
   else if (event.target.id == "edit-profile-button") {
-    let editProfilePage = document.createElement("div");
-    editProfilePage.style.cssText = "position: fixed; top: 0px; bottom: 0px; right: 0px; left: 0px; background-color: rgba(204,204,205,0.8);"
-    document.getElementById("profile-web-page-main-body").appendChild(editProfilePage);
+    displayEditProfilePage(); //edit profile page will pop up on top of the profile.html page
+  }
+  //if the #save-change-button button is clicked, then profile image, name, and/or description will change.
+  else if (event.target.id == "save-change-button") { 
+    let picture = document.getElementById("edit-profile-picture");
+    let name = document.getElementById("edit-name").value;
+    let description = document.getElementById("edit-profile-description").value;
+    console.log(picture.name);
 
-    let editProfilePicture = document.createElement("input")
-    editProfilePicture.type = "file";
-    editProfilePicture.accept = "image/*"; //image/* means any image file
-    editProfilePicture.style.cssText = "position: absolute; top: 44%;"
-    editProfilePage.appendChild(editProfilePicture);
-
-    let editName = document.createElement("textarea");
-    editName.style.cssText = "position: absolute; top: 48%; bottom: 48%;"
-    editProfilePage.appendChild(editName);
-
-    let editProfileDescription = document.createElement("textarea");
-    editProfileDescription.style.cssText = "position: absolute; top: 54%;";
-    editProfilePage.appendChild(editProfileDescription);
-
-    let saveChangeButton = document.createElement("button");
-    saveChangeButton.innerHTML = "Save Changes";
-    saveChangeButton.style.cssText = "position: absolute; top: 60%;";
-    editProfilePage.appendChild(saveChangeButton);
   }
 });
 
@@ -224,11 +212,11 @@ window.addEventListener("load", function(event) { //when the website page is loa
       }    
   }
   else if (websiteLink.includes("profile.html")) {
-    uploadScheduleHistory();
+    displayScheduleHistory();
   }
 });
 
-function uploadScheduleHistory() { //this function is used in window.addEventListener("load") third if statement content
+function displayScheduleHistory() { //this function is used in window.addEventListener("load") third if statement content
     let savedScheduleHistoryList = JSON.parse(localStorage.getItem("scheduleHistoryList"));
     let numberOfWeeks = savedScheduleHistoryList.length/7;
   
@@ -329,7 +317,42 @@ function uploadScheduleHistory() { //this function is used in window.addEventLis
     }
 }
 
+function displayEditProfilePage() {
+  let editProfilePage = document.createElement("div");
+  editProfilePage.style.cssText = "position: fixed; top: 0px; bottom: 0px; right: 0px; left: 0px; background-color: rgba(204,204,205,0.8);"
+  document.getElementById("profile-web-page-main-body").appendChild(editProfilePage);
 
+  let editProfilePicture = document.createElement("input")
+  editProfilePicture.type = "file"; //input type is file
+  editProfilePicture.accept = "image/*"; //image/* means any image file
+  editProfilePicture.onchange = uploadImageFile;
+  editProfilePicture.style.cssText = "position: absolute; top: 44%;"
+  editProfilePage.appendChild(editProfilePicture);
+
+  let editName = document.createElement("textarea");
+  editName.style.cssText = "position: absolute; top: 48%; bottom: 48%; resize: none;"
+  editProfilePage.appendChild(editName);
+
+  let editProfileDescription = document.createElement("textarea");
+  editProfileDescription.style.cssText = "position: absolute; top: 54%; resize: none;";
+  editProfilePage.appendChild(editProfileDescription);
+
+  let saveChangeButton = document.createElement("button");
+  saveChangeButton.innerHTML = "Save Changes";
+  saveChangeButton.style.cssText = "position: absolute; top: 60%;";
+  editProfilePage.appendChild(saveChangeButton);
+
+  //give each HTML element an ID.
+  editProfilePicture.id = "edit-profile-picture";
+  editName.id = "edit-name";
+  editProfileDescription.id = "edit-profile-description";
+  saveChangeButton.id = "save-change-button";
+}
+
+function uploadImageFile(event) {
+  console.log(event);
+  document.getElementById("profile-picture").src = URL.createObjectURL(event.target.files[0]);
+}
 
 
 
