@@ -109,33 +109,6 @@
 
     <script type="text/javascript" src="../austin-schedule.js"></script>
     <script>
-      /*When schedule-template html page runs, then these lines of code will also run.
-      When the page loads, savedScheduleTemplateList[i] will paste onto the day context. 
-      */
-      let savedScheduleTemplateList = JSON.parse(localStorage.getItem("scheduleTemplateList"));
-      for (let i = 0; i < savedScheduleTemplateList.length; i++) {
-        if (i == 0) {
-          document.getElementById("schedule-template-monday-text").innerHTML = savedScheduleTemplateList[i];
-        }
-        else if (i == 1) {
-          document.getElementById("schedule-template-tuesday-text").innerHTML = savedScheduleTemplateList[i];
-        }
-        else if (i == 2) {
-          document.getElementById("schedule-template-wednesday-text").innerHTML = savedScheduleTemplateList[i];
-        }
-        else if (i == 3) {
-          document.getElementById("schedule-template-thursday-text").innerHTML = savedScheduleTemplateList[i];
-        }
-        else if (i == 4) {
-          document.getElementById("schedule-template-friday-text").innerHTML = savedScheduleTemplateList[i];
-        }
-        else if (i == 5) {
-          document.getElementById("schedule-template-saturday-text").innerHTML = savedScheduleTemplateList[i];
-        }
-        else if (i == 6) {
-          document.getElementById("schedule-template-sunday-text").innerHTML = savedScheduleTemplateList[i];
-        }
-      }
     </script>
   </body>
 </html>

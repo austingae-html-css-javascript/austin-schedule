@@ -109,35 +109,6 @@
 
     <!--Javascript File-->
     <script type="text/javascript" src="../austin-schedule.js"></script>
-    <script type="text/javascript">
-      //When the weekly-schedule.html page loads, then thisWeekScheduleList items will be displayed from monday to sunday texts.
-      let thisWeekScheduleList = JSON.parse(localStorage.getItem("thisWeekScheduleList"));
-      const daysPerWeek = 7;
-      for (let day = 0; day < daysPerWeek; day++) {
-        if (day == 0) {
-          document.getElementById("monday-text").innerHTML = thisWeekScheduleList[day];
-        }
-        else if (day == 1) {
-          document.getElementById("tuesday-text").innerHTML = thisWeekScheduleList[day];
-        }
-        else if (day == 2) {
-          document.getElementById("wednesday-text").innerHTML = thisWeekScheduleList[day];
-        }
-        else if (day == 3) {
-          document.getElementById("thursday-text").innerHTML = thisWeekScheduleList[day];
-        }
-        else if (day == 4) {
-          document.getElementById("friday-text").innerHTML = thisWeekScheduleList[day];
-        }
-        else if (day == 5) {
-          document.getElementById("saturday-text").innerHTML = thisWeekScheduleList[day];
-        }
-        else if (day == 6) {
-          document.getElementById("sunday-text").innerHTML = thisWeekScheduleList[day];
-        }
-      }
-    </script>
-
   </body>
 </html>
 
