@@ -1,8 +1,6 @@
 /*
 
 */
-let savedScheduleHistoryList = JSON.parse(localStorage.getItem("scheduleHistoryList"));
-
 window.addEventListener("click", function(event) {
   //if the #done-for-the-week-button button is clicked, then...
   if (event.target.id == "done-for-the-week-button") { 
@@ -53,9 +51,7 @@ window.addEventListener("click", function(event) {
       document.getElementById("friday-text").innerHTML = savedScheduleTemplateList[4];
       document.getElementById("saturday-text").innerHTML = savedScheduleTemplateList[5];
       document.getElementById("sunday-text").innerHTML = savedScheduleTemplateList[6];
-
   }
-  
   //if the #update-schedule-template-button button is clicked, then...
   else if (event.target.id == "update-schedule-template-button") { 
 
@@ -92,8 +88,45 @@ window.addEventListener("click", function(event) {
   }
 });
 
+window.addEventListener("beforeunload", function(event) { //before the website page closes...
+  let thisWeekScheduleList = [];
+  const daysPerWeek = 7;
+  for (let day = 0; day < daysPerWeek; day++) { //thisWeekScheduleList will append monday to sunday texts.
+    if (day == 0) {
+      thisWeekScheduleList.push(document.getElementById("monday-text").value);
+    }
+    else if (day == 1) {
+      thisWeekScheduleList.push(document.getElementById("tuesday-text").value)
+    }
+    else if (day == 2) {
+      thisWeekScheduleList.push(document.getElementById("wednesday-text").value)
+    }
+    else if (day == 3) {
+      thisWeekScheduleList.push(document.getElementById("thursday-text").value)
+    }
+    else if (day == 4) {
+      thisWeekScheduleList.push(document.getElementById("friday-text").value)
+    }
+    else if (day == 5) {
+      thisWeekScheduleList.push(document.getElementById("saturday-text").value)
+    }
+    else if (day == 6) {
+      thisWeekScheduleList.push(document.getElementById("sunday-text").value)
+    }
+  }
+
+  //thisWeekScheduleList in localStorage will equal to thisWeekScheduleList array variable. 
+  //thisWeekScheduleList in localStorage will be used for when weekly-schedule.html page loads, then thisWeekScheduleList items will be displayed from monday to sunday texts.
+  localStorage.setItem("thisWeekScheduleList", JSON.stringify(thisWeekScheduleList)); 
+});
+
+//create thisWeekScheduleHistoryList in localStorage. thisWeekScheduleHistoryList equal to every day context. 
+//when the weekly-schedule html page loads, thisWeekScheduleHistoryList will also load. 
+//When #done-for-the-week button button is clicked, then this list will be set to nothing.
+
 //This function is used in the profile.html <script> section. 
 function uploadScheduleHistory() {
+    let savedScheduleHistoryList = JSON.parse(localStorage.getItem("scheduleHistoryList"));
     let numberOfWeeks = savedScheduleHistoryList.length/7;
   
     for (let week = 0; week < numberOfWeeks; week++) {
