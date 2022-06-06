@@ -111,11 +111,14 @@ window.addEventListener("click", function(event) { //
   }
   //if the #save-change-button button is clicked, then profile image, name, and/or description will change.
   else if (event.target.id == "save-change-button") { 
-    let picture = document.getElementById("edit-profile-picture");
-    let name = document.getElementById("edit-name").value;
-    let description = document.getElementById("edit-profile-description").value;
-    console.log(picture.name);
+    //when the #save-change-button button is clicked, then the profile picture will show. 
+    document.getElementById("profile-picture").style.cssText = "opacity: 1;";
 
+    //#profile-name will also change to the #edit-name value
+    document.getElementById("profile-name").innerHTML = document.getElementById("edit-name").value;
+    
+    //#profile-description will also change to the #edit-profile-description value
+    document.getElementById("profile-description").innerHTML = document.getElementById("edit-profile-description").value;
   }
 });
 
@@ -325,7 +328,7 @@ function displayEditProfilePage() {
   let editProfilePicture = document.createElement("input")
   editProfilePicture.type = "file"; //input type is file
   editProfilePicture.accept = "image/*"; //image/* means any image file
-  editProfilePicture.onchange = uploadImageFile;
+  editProfilePicture.onchange = uploadImageFile; //if editProfilePicture changes, meaning that an image file is chosen, then uploadImageFile function will execute. 
   editProfilePicture.style.cssText = "position: absolute; top: 44%;"
   editProfilePage.appendChild(editProfilePicture);
 
@@ -349,9 +352,12 @@ function displayEditProfilePage() {
   saveChangeButton.id = "save-change-button";
 }
 
-function uploadImageFile(event) {
-  console.log(event);
+function uploadImageFile(event) { //if editPicture.onchange activates, then function uploadImageFile(event) will run. 
+  //profile-picture will equal from the default picture to the chosen picture
   document.getElementById("profile-picture").src = URL.createObjectURL(event.target.files[0]);
+  //profile-picture, which is now the chosen picture, will not be shown. 
+  document.getElementById("profile-picture").style.cssText = "opacity: 0;";
+  //now, go to the "else if (event.target.id == "save-change-button")" section...
 }
 
 
@@ -371,4 +377,17 @@ window.addEventListener("beforeunload", function(event))
 
 Goal: When loading the website page, a function will run.
 window.addEventListener("load", function(event))
+
+Goal: pick image file and then upload the image onto the website page.
+Solution:
+HTML...
+<input type="file" accept="image/*" onchange="uploadImageFile()">
+<img id="profile-image" src="">
+
+Javascript...
+function uploadImageFile(event) {
+  document.getElementById("profile-image").src = URL.createObjectURL(event.target.files[0]);
+}
+
+Code: https://codepen.io/azazy/pen/EgdXxG
 */
