@@ -1,11 +1,18 @@
 #schedule-template-main-body {
   display:flex;
   flex-direction: row;
+
+  justify-content: space-between;
 }
 
 #schedule-template-left-body {
   display:flex;
   flex-direction: column;
+}
+
+#schedule-template {
+  color: white;
+  font-weight: bold;
 }
 
 #schedule-template-right-body {
@@ -73,4 +80,16 @@
 
 #done-for-the-week-button:hover {
   background-color: rgb(236, 179, 82);
+}
+
+#left-empty-space {
+  flex: 2;
+}
+
+#middle-empty-space {
+  flex: 8;
+}
+
+#right-empty-space {
+  flex: 2;
 }

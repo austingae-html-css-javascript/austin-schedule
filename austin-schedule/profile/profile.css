@@ -34,9 +34,26 @@
   background-color: rgb(84, 90, 97);
   border-style: solid;
   border-color: rgb(84, 90, 97);
+  border-radius: 10px;
+
+  margin-top: 20px;
+  
 }
 
 #schedule-history-title {
   color: white;
   font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#left-empty-space {
+  flex: 2;
+}
+
+#middle-empty-space {
+  flex: 8;
+}
+
+#right-empty-space {
+  flex: 2;
 }
