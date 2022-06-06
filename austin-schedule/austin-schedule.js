@@ -116,9 +116,17 @@ window.addEventListener("click", function(event) { //
 
     //#profile-name will also change to the #edit-name value
     document.getElementById("profile-name").innerHTML = document.getElementById("edit-name").value;
-    
+
     //#profile-description will also change to the #edit-profile-description value
     document.getElementById("profile-description").innerHTML = document.getElementById("edit-profile-description").value;
+    
+    //save profile-picture, profile-name, and profile-description to localStorage
+    localStorage.setItem("profile-picture", document.getElementById("profile-picture").src);
+    localStorage.setItem("profile-name", document.getElementById("edit-name").value);
+    localStorage.setItem("profile-description", document.getElementById("edit-profile-description").value);
+
+    //when save-change-button is clicked, then edit profile page will be gone. 
+    document.getElementById("edit-profile-page").remove();
   }
 });
 
@@ -215,7 +223,13 @@ window.addEventListener("load", function(event) { //when the website page is loa
       }    
   }
   else if (websiteLink.includes("profile.html")) {
+    //the schedule history content will be loaded. 
     displayScheduleHistory();
+
+    //when page loads, profile-picture, profile-name, and profile-description will all be loaded. 
+    document.getElementById("profile-picture").src = localStorage.getItem("profile-picture");
+    document.getElementById("profile-name").innerHTML = localStorage.getItem("profile-name");
+    document.getElementById("profile-description").innerHTML = localStorage.getItem("profile-description");
   }
 });
 
@@ -346,6 +360,7 @@ function displayEditProfilePage() {
   editProfilePage.appendChild(saveChangeButton);
 
   //give each HTML element an ID.
+  editProfilePage.id = "edit-profile-page";
   editProfilePicture.id = "edit-profile-picture";
   editName.id = "edit-name";
   editProfileDescription.id = "edit-profile-description";
@@ -390,4 +405,11 @@ function uploadImageFile(event) {
 }
 
 Code: https://codepen.io/azazy/pen/EgdXxG
+*/
+
+/*
+12:20
+- complete this project
+- how to put html pages online
+- study this: https://codepen.io/azazy/pen/EgdXxG and make tweaks to it to learn 
 */
