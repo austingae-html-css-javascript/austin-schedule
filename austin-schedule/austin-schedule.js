@@ -435,6 +435,8 @@ window.addEventListener("load", function(event) { //when the website page is loa
   }
 });
 
+
+
 /*
 What I Learned: 
 Goal: append items to localStorage
